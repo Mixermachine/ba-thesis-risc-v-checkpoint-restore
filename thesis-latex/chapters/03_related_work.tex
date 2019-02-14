@@ -1,0 +1,285 @@
+% !TeX root = ../main.tex
+% Add the above to each chapter to make compiling the PDF easier in some editors.
+
+\chapter{Related work}\label{chap:related_work}
+In this chapter, we want to revisit previous papers that
+already have found a hardware or software solution
+for the Checkpoint/Restore Mechanism
+and discuss how well their solution could fit a RISC-V
+approach. We first want to analyze the basic principle of
+the approaches and then classify them for the use in this thesis.
+The selection in inherently limited, as the number of
+hardware-focused approaches to Checkpoint/Restore is
+limited.
+
+\section{Sheaved Memory}
+\subsection{Analysis}
+Sheaved memory is discussed in a paper from 1989 
+"Sheaved memory: architectural support for state saving and 
+restoration in pages systems" \cite{Staknis:1989:SMA:68182.68191}
+that was published by Mark E. Staknis from the Northeastern 
+University of Boston, Massachusetts.
+Sheaved memory is based on grouped copies of memory pages called sheaves
+and the concept of "read-one/write-many paged memory".
+Before the execution starts, a count of
+levels has to be specified. Available are two, four or eight levels
+which translate to 2-way, 4-way, and 8-way sheaved memory.
+The levels determine the count of page files that are group
+together to form on "sheave", and thereby the amount of available checkpoint
+states the system can hold. Sheaved memory can be turned on or off
+process-wise. At the start of execution, all levels are "grouped"
+together, which means all write operations are executed on all
+levels in a sheave. Reads are not influenced by this and are executed
+on the top level of a sheave. If a program wants to create a checkpoint, one
+level is excluded from the group of levels and will not be
+written in a future write operation. The state in this level of the sheave
+is conserved. If the future execution of the program requires a new checkpoint,
+it depends on the previously chosen count of levels if another
+checkpoint can be saved or a previous checkpoint has to be sacrificed
+for a new checkpoint. Returning to a previous checkpoint is as simple as
+making a previous level the new top level. All future operations
+will be executed on this new level. If the previous checkpoint needs
+to be retained, a copy has to be made which should be ungrouped from
+the new top level.
+
+\subsection{Classification}
+Sheaved memory makes it easy for the operating system to checkpoint and
+restore memory. Read operations should not be slower compared to an
+unaltered system and write operations should also not suffer if
+the sheaved memory module can perform the write operation in parallel.
+Otherwise, the write performance could suffer by the factor of levels that
+need to be written. The model has two major downfalls: 
+memory consumption and inflexibility.
+Every checkpoint that might be used in the future consumes memory from
+the start of the application. In the worst case, eight times the memory
+of the usual memory requirement is needed to run an application, turning
+8GB of available RAM into 1GB.
+Also, the initially set count of levels cannot be changed, and thus
+the count of available checkpointing slots is inherently limited.
+With improvements to the memory consumption and the flexibility of
+the amount of available checkpointing slots, this implementation
+could be the basis of the RISC-V approach to the Checkpoint/Restore
+Mechanism.
+
+\section{Checkpoint/Restore with Hardware Cache}
+\subsection{Analysis}
+One big problem of Checkpoint/Restore techniques is the additional
+use of memory for checkpointed data elements.
+A patent with the number US2016357645
+\cite{patent_US20160357645} with the name
+"HARDWARE-ASSISTED APPLICATION CHECKPOINTING AND RESTORING"
+defines a physical Checkpoint Cache that is connected to the
+I/O system of the processor. This Checkpoint Cache is used
+to speed up the process of checkpointing a section of memory.
+The patent defines no technique like copy-on-write, so all
+the original data of the checkpoint is copied out of the RAM
+and into an external medium.
+If a restore of the data is needed the data is copied back
+from the external cache into the RAM.
+This method conserves RAM space in exchange for slower
+checkpoint and restore operations.
+
+\subsection{Classification}
+A full copy of the checkpointed data is only beneficial
+if the area of memory is changing very heavily.
+If a less active or mixed activity part of the memory
+is checkpointed, a copy-on-write approach could be beneficial.
+However, the idea of copying the checkpointed data of
+the volatile RAM is favorable if the system suffers a
+hardware defect or any other event that interrupts the
+execution.
+
+\section{Compiler-based Checkpoint/Restore}
+\subsection{Analysis}
+If the source code of a program is available and editable
+compiler-based Checkpoint/Restore can be used. This method
+does not involve changes to the hardware, but hokes into the
+process of the compilation of the program and inserts logic
+that performs the checkpoint and restore process. A programmer
+should understand the process to implement it correctly.
+The tracking process of changes can be done in many ways,
+but we will list three of them here \cite{vogt_compiler_cr}:
+
+\subsubsection{Page-granular Checkpointing}
+This classic approach utilizes a feature of modern 
+memory management units (MMUs) called
+Copy-on-Write (COW). This way only write operations trigger
+a significant additional memory usage for a checkpoint.
+Read operations on a copied unaltered memory page that was duplicated by
+the CoW operation are simply redirected to the original memory page
+the new page was copied from.
+A simple way to implement the actual checkpointing process on
+a Unix system is to execute the system call fork in the execution
+of the program. The child process should then go into a sleep mode,
+waiting for a restore command. All COW semantic is delegated to the
+kernel which makes this approach easy to implement if the operating
+system and the host hardware is capable of COW.
+
+\subsubsection{Undo Log}
+The undo log checkpoint technique keeps a record of all previous
+write operations and intercepts future read operations which are
+redirected to the newly written value. If a checkpoint should be
+restored the log history has to be processed for changes to
+the memory. The log history can grow to a considerable size as it
+needs to contain the memory address, size of the change and the
+content of the previous memory entries.
+
+\subsubsection{Shadow State}
+The method of shadow state splits the memory into a primary state
+(which contains the original data), a shadow state (changed data
+since the last checkpoint) and a tagmap which keeps track of the
+changes. The tagmap contains tags that describe if a certain
+part in the shadow state memory contains a changed copy of the
+data of the original state. New write operations are performed on
+the shadow copy and marked as modified in the tagmap. The shadow copy
+can either be completely initialized as a copy of the original
+state (COW is recommended to save memory) or can manually grow
+with an algorithm designed by the developer that allocates memory
+for every piece of data that has not already been in the shadow
+state.
+
+\subsection{Classification}
+Compiler-based approaches to Checkpoint/Restore are
+interesting, as they do not require a change to the existing
+hardware. An approach with the possibility of changing the hardware,
+like this thesis, can still use the core concepts of tracking changes, that
+are included in the compiler-based Checkpoint/Restore methods.
+
+\section{Incremental Checkpoint/Restore}
+\subsection{Analysis}
+The tracking of checkpointed memory is one of the key challenges
+of a Checkpoint/Restore system. A system can, for example, keep
+a big undo log dataset like we have seen in the previous section
+of compiler-based Checkpoint/Restore mechanism or find another way
+to track the changed parts of the memory.
+An interesting approach is presented in the paper "Comparing different approaches
+for Incremental Checkpointing: The Showdown" \cite{Vasavada2011ComparingDA}.
+They propose to repurpose the Write or Dirty bit of a page table entry
+to intercept the normal read and write operations of the system.
+
+\subsubsection{Dirty Bit}
+The dirty bit is normally responsible for marking a page as modified.
+If such a page is to be swapped out, it needs to be written back to the
+secondary memory. A clean page that exists in the secondary memory
+can be deleted without harm, as it has not been modified.
+In the presented approach the kernel is extensively modified to disable
+the dirty page check, and the bit is reused to checkpoint memory pages
+\cite{Vasavada2011ComparingDA}.
+The approach is called Berkeley Lab Checkpoint/Restart (BLCR).
+
+\subsubsection{Write Bit}
+The write bit of page table entry normally marks a page as writable to
+the system. If a write attempt is performed on a page with a disabled write
+bit, a soft page fault is risen. This mechanism can be exploited for the
+tracking of modifications to checkpointed memory pages.
+Every page that should be tracked gets a deactivated write bit.
+Every following write access to the page can now be tracked by catching the
+soft page fault.
+The Linux system itself uses this mechanism to implement the Copy-on-Write (CoW)
+mechanism. CoW allows the system to copy a page without duplicating the data it contains virtually. Read operations will be redirected
+to the original page table entry until a write operation is performed,
+which then triggers the full duplication of the data to the new location.
+
+\subsection{Classification}
+The approaches are interesting, as they utilize the already existing mechanisms
+to make the tracking of changes to checkpointed pages easier and faster.
+Sadly, they come with performance penalties, as the write and dirty bit
+are normally utilized by the system to speed up certain memory operations that
+now need to be emulated.
+If the hardware itself can be modified, these previous methods could inspire a
+new approach.
+
+\section{FPGA accelerated Checkpoint/Restore}
+\subsection{Analysis}
+Sebastian Bachmaier presents in his master thesis a new way of
+accelerating Checkpoint/Restore operations
+\cite{sebastian_bachmaier_optimizing_genode_cr_fpga}. After he identified
+the bottlenecks of previous implementations, he developed an FPGA coprocessor
+for the main ARM processor of a Xilinx board. The coprocessor is connected
+over the AXI interconnect with the ARM processor. All memory access operations
+that would normally be handled directly by the memory are redirected through
+the AXI connection to the FPGA. The FPGA then fulfills the memory accesses
+and handles Checkpoint/Restore operations.
+
+\subsection{Classification}
+As Bachmaier in his master thesis already found, the main bottleneck
+of the system is the AXI interconnect, as now every memory operations
+need to be rerouted. This introduces a delay and bandwidth limitation
+to every memory access performed by the system. If one could accelerate
+the AXI interconnect or replace it with a faster technique this method
+could be useful for processors with integrated accelerator modules.
+
+\section{VM live migration}
+\subsection{Analysis}
+Moving virtual machines (VMs) from host to host is a common occurrence
+in modern data centers. Overload conditions, hardware, and software
+maintenance are reasons that make this technique very valuable.
+Even energy can be saved if for example one host can be freed of
+VMs and then be shut down.
+To minimize downtime different techniques
+have emerged to make transfers as fast as possible.
+
+\subsubsection{Pre-Copy}
+The method of Pre-Copy tries to transfer as much data as possible
+before the complete transfer to the new machine
+starts while the VM is still running
+on the old host. In the beginning, one complete RAM image will be transferred
+to the new host. As the VM on the host is still running the content
+of the RAM will change. This new changed partitions of the RAM will
+be transferred again and again to the new host until a certain threshold of
+already transferred and freshly changed RAM on the old host is reached.
+After this threshold is reached, the VM is halted, the last bits of
+memory are transferred, and the execution is continued on the new host.
+If for some reason the new host becomes unavailable the VM can be
+simply continued on the old host. \cite{Sharma2016}
+
+\subsubsection{Post-Copy}
+The method of Post-Copy starts with transferring a minimal set of data
+to the new host, continues the VM on the new host and sequentially
+transfers the RAM content from the old host. When the
+VM now accesses the RAM it will always hit a page fault because
+only a minimal information set has already been transfered to the new host.
+The page faults
+will be resolved by a daemon that prioritizes the pages that are needed.
+The VM performance will most likely suffer at the start of the transfer
+as the transmission of data introduces a delay. Also if the new host fails
+for any reason, a restore is not easily possible.
+The advantage of this method is that the data has to be transferred only
+once \cite{sh_hu_pre-post-copy}.
+
+\subsection{Classification}
+As the techniques are specialized for migrating memory and not
+checkpointing it, they can not directly be adopted. Still, the method of
+Pre-Copy could be evaluated in the sense that one might want to consider
+doing as many nonblocking things before one impacts the execution of the
+program. Post-Copy could be used in the sense that one might start
+a checkpoint process but does not stop the execution. Instead, one could
+lock the memory access and process the resulting page locks by
+prioritizing the corresponding memory sections in the checkpointing
+process.
+
+\iffalse
+\section{CRIU}
+\subsection{Analysis}
+Checkpoint/Restore In Userspace (CRIU) is a project that implements
+Checkpoint/Restore functionality for the operating system Linux.
+It solely runs in the userspace (as the name indicates) and tries to
+implement a complete Checkpoint/Restore algorithm that can function 
+without any adaption of the program which should be processed.
+CRIU achieves this with an injection of parasite code that collects
+information about the current state of the execution.
+With CRIU it is possible to restore TCP and other connections that
+would normally have been terminated after a program has been
+continued from a checkpoint. One example of this would be a proof
+of concept work of restoring an OpenVPN connection after a kernel
+update \cite{redhat_blog_criu_connection_restore}.
+
+\subsection{Classification}
+CRIU was in an earlier bachelor thesis at the chair of operating 
+systems at the Technical University Munich found to be unfit for
+the use in the Genode operating system as it introduces security
+risks in the system \cite{david_werner_criu_fiasco}. 
+One could research if CRIU can be combined
+with a hardware element to eliminate the need for injecting the
+code, but this reaches beyond the scope of this thesis.
+\fi

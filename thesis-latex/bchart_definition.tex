@@ -1,0 +1,26 @@
+%-------------------------------------------
+% Bars:
+  \newcommand{\bccbar}[3][]{
+    % Set defaults:
+    \renewcommand{\bcbarcolor}{blue!20}
+    \renewcommand{\bcbartext}{}
+    \renewcommand{\bcbarlabel}{}
+    \renewcommand{\bcbarvalue}{#2\bcunit}
+    \renewcommand{\bcplainbar}{false}
+    % Read parameters:
+    \setkeys{bcbar}{#1}
+    % Draw bar:
+    \fill[color=\bcbarcolor,fill,draw] ([xshift=#3*(\bcwidth/\bcrange)]0,\bcpos) rectangle ([xshift=#3*(\bcwidth/\bcrange)]$#2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-5mm)$);
+    \draw ([xshift=#3*(\bcwidth/\bcrange)]0,\bcpos) rectangle ([xshift=#3*(\bcwidth/\bcrange)]$#2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-5mm)$);
+    \ifthenelse{\equal{\bcplainbar}{true}}{}{
+      % Write value:
+      \node[anchor=west] at ([xshift=#3*(\bcwidth/\bcrange)]$#2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-2.5mm)$) {\bcfontstyle\bcbarvalue};
+    }
+    % Write text:
+    \node[anchor=west] at ([xshift=#3*(\bcwidth/\bcrange)]0,\bcpos-2.5mm) {\bcfontstyle\bcbartext};
+    % Write label:
+    \node[anchor=east] at ([xshift=#3*(\bcwidth/\bcrange)]0,\bcpos-2.5mm) {\bcfontstyle\bcbarlabel};
+    % Move vertical position downward:
+    \addtolength{\bcpos}{-5mm}
+  }%
+%-------------------------------------------

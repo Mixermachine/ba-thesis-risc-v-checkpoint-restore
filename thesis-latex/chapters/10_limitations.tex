@@ -1,0 +1,44 @@
+\chapter{Limitations}
+\label{chap:limitations}
+\section{Xilinx boards and Vivado}
+In the course of this thesis many problems were encountered.
+The first problem that has been met was the deprecation of the
+fpga-zynq repository, which made the attempt to bring
+a working RISC-V core on the Xilinx boards Zybo Zynq-7000
+and Zedboard fail.
+The compatibility of the Xilinx Vivado development suite sometimes
+seems to be unclear. The SiFive Freedom repository, for example,
+recommends the version 2017.1 or newer for the E300 platform as
+"old versions are known to fail". The recommended version for the
+U500 platform, on the other hand, is 2016.04 or older as
+"newer versions are known to fail"
+\footnote{https://github.com/sifive/freedom}.
+
+Also, in the course of this Bachelor thesis, a patch update from
+2018.2 to 2018.2.2 provoked a failure in the compilation process.
+Reverting to the previous version fixed the issue.
+
+\section{Rocket-chip repository}
+As we have seen in the chapter \ref{chap:implementation} the
+Rocket-chip project file \textit{PTW.scala} did not contain many lines of
+comments. After some further inspection of the Rocket-chip repository
+and the use of the Scalastyle inspection \footnote{http://www.scalastyle.org/}
+in IntelliJ it is apparent, that the project contains a meager
+number of comments. This makes it hard for beginners to understand
+the logic of the project. One developer in the mailing list recommended
+to execute the virtual tests and analyze the resulting waveform file as the
+good way to understand the logic
+\footnote{\url{https://groups.google.com/forum/?utm_medium=email&utm_source=footer\#!msg/riscv-boom/jZ1gC4Qs35Q/8HltWll_CgAJ}}.
+
+\section{Concept}
+The presented concept mainly contains two limitations.
+First, there is the reduction of addressable virtual memory, as the
+proposed method splits the virtual memory space into \textit{n} equally sized
+parts. This can limit larger applications, especially if many checkpoint
+slots are necessary.
+The second limitation is the performance penalty for recursively searching
+the current working copy of a page table entry, as every new incremental
+checkpoint adds a new page table entry.
+The last limitation is the higher memory requirement for the TLB, which
+first needs to hold two more bits per PTE and secondly has to store
+n PTEs in the worst case to access one working copy for one memory page.

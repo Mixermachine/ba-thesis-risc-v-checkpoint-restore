@@ -1,0 +1,36 @@
+\chapter{Motivation}\label{chap:motivation}
+The chair of operating systems at the Technical University Munich is currently 
+refining an operating system called Genode that should be fault tolerant
+and hardened against attackers.
+The system should be able to support real-time applications in the
+field of car electronics. One essential part of making this system
+fault tolerant is to implement the technique of Checkpoint/Restore for
+the RAM system. This technique makes it possible to manage a complete failure of
+one unit with little to no noticeable downtime and small additional
+computational expenses as long as a mirror unit is available.
+The previous implementations of the Checkpoint/Restore technique have
+been implemented in software and thus are slowing the system down,
+as fast access to memory is crucial for modern computer
+systems \cite{sebastian_bachmaier_optimizing_genode_cr_fpga}.
+When searching for new ways to implement a hardware solution
+for this technique, one soon comes across the RISC-V architecture.
+This instruction set architecture (ISA) is completely open source
+and can be modified by everybody. It is built to be modular and expandable.
+Major big companies like Nvidia \cite{risc-v_member_nvidia} and 
+Western Digital \cite{risc-v_member_wd}
+joined the RISC-V consortium and want to use the new ISA extensively.
+Western Digital as a Platinum member has already developed and
+open sourced a RISC-V
+instruction set simulator called Whisper \cite{wd_github_whisper}, \cite{github_swerv_iss} and a
+RISC-V implementation called SweRV Core \cite{wd_swerv_core}, \cite{github_swerv_core}.
+Western Digital ships more than one billion processors each year
+and plans to migrate the ARM-based processors to RISC-V
+\cite{risc-v_news_wd_one_billion_chips}.
+With the new possibility of directly customizing a processor new
+ways of implementing a Checkpoint/Restore mechanism can be found,
+that do not suffer from drastic performance reductions.
+Even though custom hardware modules exist, a direct implementation
+in the CPU is beneficial, as it can be faster.
+
+Taking the traction the RISC-V project has gained in recent years
+this topic looks very promising.

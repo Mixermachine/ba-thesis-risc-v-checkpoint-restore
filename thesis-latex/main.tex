@@ -6,17 +6,18 @@
 
 % TODO: change citation style in settings
 \input{settings}
+\input{bchart_definition}
 
 % TODO: change thesis information
 \newcommand*{\getUniversity}{Technische Universität München}
 \newcommand*{\getFaculty}{Department of Informatics}
-\newcommand*{\getTitle}{Thesis title}
-\newcommand*{\getTitleGer}{Titel der Abschlussarbeit}
-\newcommand*{\getAuthor}{Author}
-\newcommand*{\getDoctype}{Thesis type (Bachelor's Thesis in Informatics, Master's Thesis in Robotics, \ldots)}
-\newcommand*{\getSupervisor}{Supervisor}
-\newcommand*{\getAdvisor}{Advisor}
-\newcommand*{\getSubmissionDate}{Submission date}
+\newcommand*{\getTitle}{Extending the RISC-V Memory Management Unit by Support for a Real-Time Capable Checkpoint/Restore Mechanism}
+\newcommand*{\getTitleGer}{Erweiterung der RISC-V Memory Management Unit um Unterstützung für einen echtzeitfähigen Checkpoint/Restore Mechanismus}
+\newcommand*{\getAuthor}{Aaron Dietz}
+\newcommand*{\getDoctype}{Bachelor's Thesis in Informatics}
+\newcommand*{\getSupervisor}{Prof. Dr. Uwe Baumgarten}
+\newcommand*{\getAdvisor}{Sebastian Eckl, M.Sc. }
+\newcommand*{\getSubmissionDate}{15.02.2018}
 \newcommand*{\getSubmissionLocation}{Munich}
 
 \begin{document}
@@ -30,7 +31,7 @@
 
 \input{pages/title}
 \input{pages/disclaimer}
-\input{pages/acknowledgments}
+\input{pages/acknowledgements}
 \input{pages/abstract}
 \microtypesetup{protrusion=false}
 \tableofcontents{}
@@ -39,6 +40,19 @@
 \mainmatter{}
 
 \input{chapters/01_introduction}
+\input{chapters/02_motivation}
+\input{chapters/03_related_work}
+\input{chapters/04_foundation}
+\input{chapters/05_risc-v}
+\input{chapters/06_mod_risc-v}
+\input{chapters/07_concept}
+\input{chapters/08_implementation}
+\input{chapters/09_evaluation}
+\input{chapters/10_limitations}
+\input{chapters/11_future_work}
+\input{chapters/12_conclusion}
+
+
 % TODO: add more chapters here
 
 \appendix{}

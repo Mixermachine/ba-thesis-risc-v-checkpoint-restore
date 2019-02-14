@@ -1,0 +1,17 @@
+\chapter{Future work}\label{chap:future_work}
+The future work for this thesis will include the implementation
+of the Checkpoint/Restore concept which was presented earlier.
+As the RISC-V architecture is steadily growing, this might be
+a worthwhile task for future processors and applications.
+In subsection \ref{subsec:thoughs_impl} we already
+discovered, that the memory system of a Rocket core is more
+complex as previously anticipated.
+We have found two ways to implement the concept of which
+the first one was expensive and the second one contained
+a performance penalty. For the future work, the author
+recommends the second option, as firstly the performance penalty
+only hits when a checkpoint is created, and secondly,
+the performance should only be mildly impaired as
+only small sets of data need to be renewed, and the
+resolution of page tables is, in general, a very accelerated
+task.

@@ -1,90 +1,48 @@
 % !TeX root = ../main.tex
 % Add the above to each chapter to make compiling the PDF easier in some editors.
 
-\chapter{Introduction}\label{chapter:introduction}
+\chapter{Introduction}\label{chap:introduction}
 
-\section{Section}
-Citation test~\parencite{latex}.
+Developing a website has become very easy in recent years. A basic model of a personal site can be made with
+a decent amount of work and an HTML template. Even such complicated software as a whole operation system
+(Linux for example) is open-sourced and available to everybody with an internet connection.
+Linux is even the most used operating system for web servers worldwide \cite{w3techs_usage_op_website}.
+Developing a CPU on the other side is an entirely different story. Almost all CPU architectures are
+closed source and owned by large companies. The execution of most modern CPUs cannot be tracked, in
+fact, many contain a so-called secure zone or trusted zone that handles DRM content and security-related
+work like storing cryptography keys \cite{microcontrollertips_arm_trustzone_explained}.
+A general distrust against these proprietary zones has risen among enthusiast users that motivated
+some users so far that they researched the Intel Active-Management-Technology (AMT) and found a security
+vulnerability by which they could completely disable the functionality \cite{github_disable_intel_amt}.
+However, these more or less official hidden layers are of small concern when we consider the thread of
+undocumented backdoors built into the hardware. Modern x86 processors contain hidden subprocessors
+that might have unrestricted access to the execution of the main processor. One security researcher
+found such a backdoor and used it to gain root access on an old VIA x86 system 
+\cite{christopher_domas_god_mode_unlocked}.
+Furthermore, the undocumented features are not the only problem of the current generation of the processor: in January
+of 2018, two new security vulnerabilities surfaced that deeply shattered the security of many processors.
+Spectre \cite{Kocher2018spectre} hit AMD processors, Intel processors and many other chips, that use 
+out-of-order execution and Meltdown \cite{Lipp2018meltdown} hit manly Intel processors with speculative
+execution (starting from 1995, nearly all processors). These flaws, for the 
+most part can be fixed with an update,
+but the current implementation of the fixes lowers the performance of the system and are thus not ideal.
+New hardware mitigations have to be implemented.
+Apart from the user perspective, the situation for producers of electronic components is not ideal either.
+Many manufacturers need processors to power their products, of which a prominent example is Nvidia. Graphics cards
+have become very complex and thus also need co-processors. Developing a new processor for every new product
+is not feasible for these companies. Currently, they need to buy processors from vendors. The problem with this
+approach is that the bought architecture often cannot be easily extended with a needed extension or
+an accelerator which a new product needs let alone it is even possible to extend it. These bought
+custom solutions are not cheap either.
 
-\subsection{Subsection}
-
-See~\autoref{tab:sample}, \autoref{fig:sample-drawing}, \autoref{fig:sample-plot}, \autoref{fig:sample-listing}.
-
-\begin{table}[htpb]
-  \caption[Example table]{An example for a simple table.}\label{tab:sample}
-  \centering
-  \begin{tabular}{l l l l}
-    \toprule
-      A & B & C & D \\
-    \midrule
-      1 & 2 & 1 & 2 \\
-      2 & 3 & 2 & 3 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\begin{figure}[htpb]
-  \centering
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}[node distance=3cm]
-    \node (R0) {$R_1$};
-    \node (R1) [right of=R0] {$R_2$};
-    \node (R2) [below of=R1] {$R_4$};
-    \node (R3) [below of=R0] {$R_3$};
-    \node (R4) [right of=R1] {$R_5$};
-
-    \path[every node]
-      (R0) edge (R1)
-      (R0) edge (R3)
-      (R3) edge (R2)
-      (R2) edge (R1)
-      (R1) edge (R4);
-  \end{tikzpicture}
-  \caption[Example drawing]{An example for a simple drawing.}\label{fig:sample-drawing}
-\end{figure}
-
-\begin{figure}[htpb]
-  \centering
-
-  \pgfplotstableset{col sep=&, row sep=\\}
-  % This should probably go into a file in data/
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1000 \\
-    2 & 1500 \\
-    3 & 1600 \\
-  }\exampleA
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1200 \\
-    2 & 800 \\
-    3 & 1400 \\
-  }\exampleB
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}
-    \begin{axis}[
-        ymin=0,
-        legend style={legend pos=south east},
-        grid,
-        thick,
-        ylabel=Y,
-        xlabel=X
-      ]
-      \addplot table[x=a, y=b]{\exampleA};
-      \addlegendentry{Example A};
-      \addplot table[x=a, y=b]{\exampleB};
-      \addlegendentry{Example B};
-    \end{axis}
-  \end{tikzpicture}
-  \caption[Example plot]{An example for a simple plot.}\label{fig:sample-plot}
-\end{figure}
-
-\begin{figure}[htpb]
-  \centering
-  \begin{tabular}{c}
-  \begin{lstlisting}[language=SQL]
-    SELECT * FROM tbl WHERE tbl.str = "str"
-  \end{lstlisting}
-  \end{tabular}
-  \caption[Example listing]{An example for a source code listing.}\label{fig:sample-listing}
-\end{figure}
+Many companies and associations have tried to solve the issues of developing a flexible and open ISA, 
+but no other has reached as far as the Berkeley University of California with their RISC-V design.
+It is designed to be easily extendable and said to fit microcontrollers, as well as to many core
+massive computing processors like the SuperMUC NG in Garching uses.
+Safety concerns can also be addressed if the code of a RISC-V implementation is published
+and audited. No Spectre or Meltdown vulnerability has yet been seen in a RISC-V implementation
+although this statement heavily relies on the correctness of the implementation.
+This bachelor thesis will dive deeper into the extendability of the RISC-V design and the
+implementation of the design from the Berkeley University.
+With the new possibility of extending a CPU design, we want to look into the probability
+of implementing a Checkpoint/Restore mechanism in hardware.

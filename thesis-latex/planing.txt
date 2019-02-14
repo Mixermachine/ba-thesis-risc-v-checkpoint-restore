@@ -1,0 +1,35 @@
+
+Introduction (Entwicklung Rechnerarchitektur, SpezialHW (AI,...), Western Digital, NVIDIA)
+Motivation (Eigene Motivation, Veränderbar -> Checkpointer/Restore, andere Arbeite: Extension, Beschleunigung)
+Related work
+	RISC-V (Google scholar, Implementierungen,...)
+	
+Foundation, Basis
+	MMU
+		Allgemein
+	Checkpointer/Restore (Problematik beschreiben, Effizienzproblem, Memory tracing, Memory copying, Verbesserungen)
+	FPGA (Zynq fpgas (ARM-FPGA, reiner FPGA)
+RISC-V (Grundstruktur, Tiles, Chisel, Scala, vl auf Basis von Rocket-Chip, Unterschiede BOOM, Rocket-Chip, ETH Zürich, SiFive)
+Mod RISC-V (Einfache Erweiterung, z.B. Pipeline Erweiterung, Modifikation einer MMU)
+	How does MMU of RISC-V work, how to modify
+Concept
+	Schon erhaltene Arbeit -> Dirtybit der MMU, zusätzliches Flag für Check/Restore, zweites Level: memory copy)
+Implementation of Check/Restore in rocket-chip scala (Anfänge, Probleme, Boards, Mailing list ref, Vivado Prozess)
+	History der Abspaltung von RISC-V
+	SiFive (Ausprägungen 
+Evaluation
+Limitations (Mod mmu, beste RISC-V impl)
+Future work
+Conclusion
+
+Lim, Fut, Concl 3 Seiten
+
+Ziel 40 - 60 Seiten
+
+next steps:
+
+- Setup of chapters
+
+- Ask RISC-V implementations what are the differences between them
+-> ETH Zurich
+-> others

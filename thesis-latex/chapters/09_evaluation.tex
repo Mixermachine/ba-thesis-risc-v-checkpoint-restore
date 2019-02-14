@@ -1,0 +1,40 @@
+\chapter{Evaluation}\label{chap:evaluation}
+In the course of this bachelor thesis, we explored how the
+RISC-V ISA is set up and how the implementation of the
+University of Berkeley rocket-chip can be extensively
+configured to fit many use-cases.
+The start of the bachelor thesis was mainly dominated
+by the setup of the Xilinx boards the included Xilinx Vivado
+development suite.
+Sadly the fpga-zynq repository is no longer up to date, and thus
+the attempt to bring a working Rocket-core on an FPGA-ARM board did
+not succeed.
+The experience with the Xilinx Arty board in combination
+with the up-to-date Freedom repository from SiFive was significantly better.
+However, as the Arty board does not contain a large enough
+FPGA to support an MMU, it was not usable for this thesis.
+Nonetheless, the gained knowledge of working with the Freedom
+platform can still be used for later attempts of bringing
+the larger SiFive U500 platform on the new Xilinx VC707 FPGA board
+at the chair. The included quad-core in the U500 platform
+contains an MMU and is capable of running Linux.
+The following phase in
+section \ref{sec:rocket-chip} was dominated by the studies of
+the Rocket Chip project and the structure of the Rocket core.
+As the concept of the hardware construction language Chisel
+is new and the Rocket Chip project contains only a small number
+of comments the initial barrier to understanding the structure was high.
+With the help of the people from the RISC-V and BOOM mailing list,
+initial questions could be resolved and the system was easier to understand.
+After further analysis of the Rocket Core, one found the
+caching structure to be more complicated than previously
+anticipated but well thought out.
+The scope of the implementation will need to include some
+change to the translation lookaside buffers, located in the
+L1 caches of the Rocket tiles.
+The concept in chapter \ref{chap:concept} could not be
+implemented, as time was restricted.
+For future approaches, it might be beneficial to start first
+with a virtual emulator instead of a physical FPGA attempt,
+to speed up the initial discovery process of the Rocket-Chip
+generator.

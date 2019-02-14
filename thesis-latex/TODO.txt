@@ -1,0 +1,7 @@
+- Graph for concept
+
+- Cursive writing for special words
+
+- Chisel graph?
+
+- Rethink MMU, TBU also needs logic, or TBU cannot save checkpointed PTEs

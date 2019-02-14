@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="410px" height="451px" viewBox="0 0 410 451" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>FAK_IN_RGB</title>
+    <desc>Created with Sketch.</desc>
+    <defs/>
+    <g id="TUM_Fakultätszeichen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Blau---BASIS-Konstruktion" sketch:type="MSLayerGroup" transform="translate(-3928.000000, 0.000000)" fill="#0065BD">
+            <path d="M4128.83994,404.669063 L4137.17383,404.669063 L4137.17383,0 L4128.83994,0 L4128.83994,404.669063 Z M4150.05349,41.1873404 L4149.36474,49.4799086 C4250.45968,57.8138019 4329.65233,143.893966 4329.65233,245.484814 C4329.65233,353.894302 4241.43704,442.109595 4132.98622,442.109595 C4024.54919,442.109595 3936.32012,353.894302 3936.32012,245.484814 C3936.32012,143.880191 4015.52654,57.8000269 4116.63526,49.4799086 L4115.96029,41.1873404 C4010.55376,49.8380594 3928,139.596156 3928,245.484814 C3928,358.522712 4019.9621,450.457264 4132.98622,450.457264 C4246.0379,450.457264 4338,358.522712 4338,245.484814 C4338,139.609931 4255.44624,49.8518344 4150.05349,41.1873404 L4150.05349,41.1873404 Z" id="FAK_IN_RGB" sketch:type="MSShapeGroup"/>
+        </g>
+    </g>
+</svg>

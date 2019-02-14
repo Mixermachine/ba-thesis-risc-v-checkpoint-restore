@@ -1,7 +1,706 @@
-@book{latex,
-  title = {LaTeX : A Documentation Preparation System User's Guide and Reference Manual},
-  publisher = {Addison-Wesley Professional},
-  year = {1994},
-  author = {Leslie Lamport}
+
+% sites
+@misc{w3techs_usage_op_website,
+title = {W3techs. Usage of operating systems for websites},
+howpublished = {\url{https://w3techs.com/technologies/overview/operating_system/all}},
+note = {Accessed: 2018-12-09}
 }
 
+@misc{microcontrollertips_arm_trustzone_explained,
+title = {Microcontrollertips. Arm TrustZone explained},
+howpublished = {\url{https://www.microcontrollertips.com/embedded-security-brief-arm-trustzone-explained/}},
+note = {Accessed: 2018-12-13}
+}
+
+@misc{github_disable_intel_amt,
+title = {Github, Bartblaze, Disable Intel AMT repository},
+howpublished = {\url{https://github.com/bartblaze/Disable-Intel-AMT/}},
+note = {Accessed: 2018-12-16}
+}
+
+@misc{risc-v_member_nvidia,
+title = {RISC-V, Member Directory Nvidia},
+howpublished = {\url{https://riscv.org/membership/1437/nvidia/}},
+note = {Accessed: 2018-12-29}
+}
+
+@misc{carnegie_checkpoint-restore,
+title = {Carnegie Mellon University, John DeVale, Checkpoint-Recovery},
+howpublished = {\url{https://users.ece.cmu.edu/~koopman/des_s99/checkpoint/}},
+note = {Accessed: 2019-01-03}
+}
+
+@misc{redhat_blog_criu_connection_restore,
+title = {Redhat Blog, Adrian Reber Using CRIU to upgrade a VPN 
+server's kernel without dropping connections},
+howpublished = {\url{https://www.redhat.com/en/blog/using-criu-upgrade-vpn-servers-kernel-without-dropping-connections}},
+note = {Accessed: 2019-01-10}
+}
+
+@misc{arm_gpu_hevc,
+title = {ARM, GPU Compute accelerated HEVC decoder on ARM® MaliTM-T600 GPUs},
+howpublished = {\url{https://www.arm.com/files/event/Mali_Partner_Track_4_GPU_Compute_accelerated_HEVC_decoder_on_ARM_Mali-T600_GPUs.pdf}},
+note = {Accessed: 2019-01-10}
+}
+
+@misc{christopher_domas_god_mode_unlocked,
+title = {Christopher Domas, GOD MODE UNLOCKED - Hardware Backdoors in x86 CPUs},
+howpublished = {\url{https://www.youtube.com/watch?time_continue=3058&v=_eSAF_qT_FY}},
+note = {Accessed: 2019-01-12}
+}
+
+@misc{kallstrom_fpga_cell_example,
+title = {Petter Källström, FPGA cell example},
+howpublished = {\url{https://commons.wikimedia.org/wiki/File:FPGA_cell_example.png}},
+note = {Accessed: 2019-01-15}
+}
+
+@misc{github_risc-v_b_extension_release,
+title = {Github, RISC-V B extension releases repository},
+howpublished = {\url{https://github.com/cliffordwolf/xbitmanip/releases}},
+note = {Accessed: 2019-01-17}
+}
+
+@misc{risc-v_faq,
+title = {RISC-V, Frequently Asked Questions about RISC-V},
+howpublished = {\url{https://riscv.org/faq/}},
+note = {Accessed: 2019-01-18}
+}
+
+@misc{risc-v_members,
+title = {RISC-V, Members at a Glance},
+howpublished = {\url{https://riscv.org/members-at-a-glance/}},
+note = {Accessed: 2019-01-18}
+}
+
+@misc{risc-v_compressed_workshop,
+title = {RISC-V, RISC-V	Compressed Extension Workshop June 2015},
+howpublished = {\url{https://riscv.org/wp-content/uploads/2015/06/riscv-compressed-workshop-june2015.pdf}},
+note = {Accessed: 2019-01-19}
+}
+
+@misc{gnu_gcc_transactional_memory,
+title = {GNU GCC, Transactional Memory in GCC},
+howpublished = {\url{https://gcc.gnu.org/wiki/TransactionalMemory}},
+note = {Accessed: 2019-01-20}
+}
+
+@misc{risc-v_software_status,
+title = {RISC-V, RISC-V Software Ecosystem Overview},
+howpublished = {\url{https://riscv.org/software-status/}},
+note = {Accessed: 2019-01-20}
+}
+
+@misc{proxmox_qemu_wiki,
+title = {Proxmox, Qemu/KVM Virtual Machines},
+howpublished = {\url{https://pve.proxmox.com/wiki/Qemu/KVM_Virtual_Machines}},
+note = {Accessed: 2019-01-20}
+}
+
+@misc{github_riscv_qemu,
+title = {Github, RISC-V QEMU repository},
+howpublished = {\url{https://github.com/riscv/riscv-qemu}},
+note = {Accessed: 2019-01-20}
+}
+
+@misc{amazon_fpga_instances,
+title = {Amazon, Amazon EC2 F1-Instances},
+howpublished = {\url{https://aws.amazon.com/de/ec2/instance-types/f1/}},
+note = {Accessed: 2019-01-20}
+}
+
+@misc{chisel_community_firesim,
+title = {Chisel Community Conference 2018, FireSim Intensive (Architecture Track)},
+howpublished = {\url{https://www.youtube.com/watch?v=S3OriQnJXYQ}},
+note = {Accessed: 2019-01-20}
+}
+
+
+@misc{xilinx_amazon_ultrascale,
+title = {Xilinx, Amazon picks Xilinx UltraScale+ FPGAs to accelerate AWS},
+howpublished = {\url{https://forums.xilinx.com/t5/Xcell-Daily-Blog-Archived/Amazon-picks-Xilinx-UltraScale-FPGAs-to-accelerate-AWS-launches/ba-p/735873}},
+note = {Accessed: 2019-01-20}
+}
+
+@misc{sifive_risc-v_emulators,
+title = {SiFive, RISC-V QEMU Part 1: Privileged ISA v1.10, HiFive1 and VirtIO},
+howpublished = {\url{https://www.sifive.com/blog/risc-v-qemu-part-1-privileged-isa-hifive1-virtio}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{github_riscv-angel,
+title = {Github, riscv-angel repository},
+howpublished = {\url{https://github.com/riscv/riscv-angel}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{bellard_jslinux,
+title = {Fabrice Bellard, JSLinux},
+howpublished = {\url{https://bellard.org/jslinux/}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{github_risc-v_toolchain,
+title = {Github, RISC-V GNU Compiler Toolchain repository},
+howpublished = {\url{https://github.com/riscv/riscv-gnu-toolchain}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{lowrisc_cross-compiler,
+title = {lowRISC, Compile and install RISC-V cross-compiler},
+howpublished = {\url{https://www.lowrisc.org/docs/untether-v0.2/riscv_compile/}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{github_risc-v_llvm,
+title = {Github, RISC-V LLVM repository},
+howpublished = {\url{https://github.com/lowrisc/riscv-llvm}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{github_risc-v_linux_kernel,
+title = {Golem, RISC-V LLVM},
+howpublished = {\url{https://www.golem.de/news/cpu-architektur-risc-v-portierung-in-den-linux-kernel-aufgenommen-1711-131182.html}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{poronix_linux_kernel,
+title = {Phoronix, RISC-V's Linux Kernel Support Is Getting Into Good Shape, Userspace Starting To Work},
+howpublished = {\url{https://www.phoronix.com/scan.php?page=news_item&px=Linux-4.19-RISC-V}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{debian_debian-ports_architectures,
+title = {Debian, Official architectures - Debian-ports architectures},
+howpublished = {\url{https://buildd.debian.org/stats/}},
+note = {Accessed: 2019-01-22}
+}
+
+@misc{risc-v_chisel,
+title = {RISC-V, Chisel – Accelerating Hardware Design},
+howpublished = {\url{https://riscv.org/wp-content/uploads/2015/01/riscv-chisel-tutorial-bootcamp-jan2015.pdf}},
+note = {Accessed: 2019-01-23}
+}
+
+@misc{risc-v_workshop_jan2015,
+title = {RISC-V, RISC-V “Rocket Chip” SoC Generator in Chisel},
+howpublished = {\url{https://riscv.org/wp-content/uploads/2015/01/riscv-rocket-chip-generator-workshop-jan2015.pdf}},
+note = {Accessed: 2019-01-25}
+}
+
+@misc{github_risc-sodor,
+title = {Github, riscv-sodor repository},
+howpublished = {\url{https://github.com/ucb-bar/riscv-sodor}},
+note = {Accessed: 2019-01-23}
+}
+
+@misc{opencelerity_page,
+title = {Opencelerity, Open-Source RISC-V Tiered Accelerator Fabric SoC},
+howpublished = {\url{http://opencelerity.org/}},
+note = {Accessed: 2019-01-25}
+}
+
+@misc{risc-v_z-scale,
+title = {RISC-V, Z-scale: Tiny 32-bit RISC-V Systems},
+howpublished = {\url{https://riscv.org/wp-content/uploads/2015/06/riscv-zscale-workshop-june2015.pdf}},
+note = {Accessed: 2019-01-25}
+}
+
+@misc{risc-v_tilelink,
+title = {SiFive, TileLink: A free and open-source, highperformance scalable cache-coherent
+fabric designed for RISC-V},
+howpublished = {\url{https://content.riscv.org/wp-content/uploads/2017/12/Wed-1154-TileLink-Wesley-Terpstra.pdf}},
+note = {Accessed: 2019-01-25}
+}
+
+@misc{github_z-scale,
+title = {Github, Z-scale Microarchitectural Implementation of RV32 ISA repository},
+howpublished = {\url{https://github.com/ucb-bar/zscale}},
+note = {Accessed: 2019-01-26}
+}
+
+@misc{stackoverflow_zscale,
+title = {StackOverFlow, How to build a Zscale core? (RISC-V, rocket-chip)},
+howpublished = {\url{https://stackoverflow.com/questions/38732041/how-to-build-a-zscale-core-risc-v-rocket-chip}},
+note = {Accessed: 2019-01-26}
+}
+
+@misc{youtube_linux_kernel_current_status,
+title = {Youtube, Linux Kernel on RISC-V: Where Do We Stand},
+howpublished = {\url{https://www.youtube.com/watch?v=6X6i0kcy3GA}},
+note = {Accessed: 2019-01-26}
+}
+
+@misc{genode_platforms,
+title = {Genode, How to use Genode with different kernels},
+howpublished = {\url{https://genode.org/documentation/platforms/index}},
+note = {Accessed: 2019-01-28}
+}
+
+@misc{genode_risc-v_port,
+title = {Genode, How Genode came to RISC-V},
+howpublished = {\url{https://genode.org/documentation/articles/riscv}},
+note = {Accessed: 2019-01-28}
+}
+
+@misc{risc-v_state_of_the_union_dec_2018,
+title = {RISC-V, State	of	the	Union, Santa Clara Convention Center, Santa Clara, CA},
+howpublished = {\url{https://content.riscv.org/wp-content/uploads/2018/12/8.40-Asanovic-RISC-V-State-of-the-Union.pdf}},
+note = {Accessed: 2019-01-28}
+}
+
+@misc{sifive_core_designer,
+title = {SiFive, SiFive Core Designer},
+howpublished = {\url{https://scs.sifive.com/core-designer/}},
+note = {Accessed: 2019-01-30}
+}
+
+@misc{rocket_chip_rocc_presentation,
+title = {James Martin, RISC-V, Rocket, and RoCC},
+howpublished = {\url{https://inst.eecs.berkeley.edu/~cs250/sp17/disc/lab2-disc.pdf}},
+note = {Accessed: 2019-01-30}
+}
+
+@misc{github_fpga_zynq,
+title = {Github, Rocket Chip on Zynq FPGAs},
+howpublished = {\url{https://github.com/ucb-bar/fpga-zynq}},
+note = {Accessed: 2019-02-02}
+}
+
+@misc{elinux_zedboard,
+title = {eLinux, Zedboard},
+howpublished = {\url{https://elinux.org/Zedboard}},
+note = {Accessed: 2019-02-02}
+}
+
+@misc{xilinx_zybo,
+title = {Xilinx, Digilent Zybo Zynq-7000 ARM/FPGA SoC Trainer Board},
+howpublished = {\url{https://www.xilinx.com/products/boards-and-kits/1-4azfte.html}},
+note = {Accessed: 2019-02-02}
+}
+
+@misc{github_freedom,
+title = {Github, Freedom},
+howpublished = {\url{https://github.com/sifive/freedom}},
+note = {Accessed: 2019-02-03}
+}
+
+@misc{xilinx_virtex7,
+title = {Xilinx, Xilinx Virtex-7 FPGA VC707 Evaluation Kit},
+howpublished = {\url{https://www.xilinx.com/products/boards-and-kits/ek-v7-vc707-g.html}},
+note = {Accessed: 2019-02-03}
+}
+
+@misc{github_rocket-chip,
+title = {Github, Rocket Chip Generator},
+howpublished = {\url{https://github.com/freechipsproject/rocket-chip}},
+note = {Accessed: 2019-02-04}
+}
+
+@misc{verilator_verilator,
+title = {Verilator, Introduction to Verilator},
+howpublished = {\url{https://www.veripool.org/wiki/verilator}},
+note = {Accessed: 2019-02-04}
+}
+
+@misc{github_riscv-tests,
+title = {Github, riscv-tests},
+howpublished = {\url{https://github.com/riscv/riscv-tests}},
+note = {Accessed: 2019-02-04}
+}
+
+@misc{github_swerv_core,
+title = {Github, SweRV RISC-V CoreTM from Western Digital},
+howpublished = {\url{https://github.com/westerndigitalcorporation/swerv_eh1}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{github_swerv_iss,
+title = {Github, Western Digital’s Open Source RISC-V SweRV Instruction Set Simulator},
+howpublished = {\url{https://github.com/westerndigitalcorporation/swerv-ISS}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{theregister_arm_campaign_risc-v,
+title = {The Register, Up in arms! Arm kills off its anti-RISC-V smear site after own staff revolt},
+howpublished = {\url{https://www.theregister.co.uk/2018/07/10/arm_riscv_website/}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{top500_mips_acquired,
+title = {Top500, MIPS Acquired by AI Startup Wave Computing},
+howpublished = {\url{https://www.top500.org/news/mips-acquired-by-ai-startup-wave-computing/
+}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{wavecomputing_mips_open,
+title = {Wave Computing, MIPS Open™},
+howpublished = {\url{https://wavecomp.ai/mipsopen}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{risc-v_sifive_hifive,
+title = {RISC-V, Bit-tech Article: SiFive announces 64-bit 1.5GHz RISC-V HiFive Unleashed SBC},
+howpublished = {\url{https://riscv.org/2018/02/bit-tech-article-sifive-announces-64-bit-1-5ghz-risc-v-hifive-unleashed-sbc/}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{linuxgizmos_sifive_u74,
+title = {Linux Gizmos, SiFive unveils new RISC-V designs, including two Linux-ready models},
+howpublished = {\url{http://linuxgizmos.com/sifive-unveils-octa-core-risc-v-designs-including-two-linux-ready-models/}},
+note = {Accessed: 2019-02-05}
+}
+
+@misc{lowrisc_rocket_core_overview,
+title = {lowRISC, Rocket core overview},
+howpublished = {\url{https://www.lowrisc.org/docs/tagged-memory-v0.1/rocket-core/}},
+note = {Accessed: 2019-02-06}
+}
+
+@misc{uniminnesota_vm_address_translation,
+title = {University of Minnesota Duluth, Virtual Memory Address Translation},
+howpublished = {\url{https://www.d.umn.edu/~gshute/os/address-translation.xhtml}},
+note = {Accessed: 2019-02-06}
+}
+
+@misc{anandtech_wd_swerv_ssds,
+title = {Anandtech, Western Digital Reveals SweRV RISC-V Core, Cache Coherency over Ethernet Initiative},
+howpublished = {\url{https://www.anandtech.com/show/13678/western-digital-reveals-swerv-risc-v-core-and-omnixtend-coherency-tech}},
+note = {Accessed: 2019-02-07}
+}
+
+
+
+
+
+
+% Western Digital
+@misc{risc-v_member_wd,
+title = {RISC-V, Member Directory Western Digital},
+howpublished = {\url{https://riscv.org/membership/1020/western-digital/}},
+note = {Accessed: 2018-12-29}
+}
+@misc{wd_github_whisper,
+title = {Github, RISC-V instruction set simulator Whisper repository},
+howpublished = {\url{https://github.com/westerndigitalcorporation/swerv-ISS}},
+note = {Accessed: 2018-12-29}
+}
+@misc{wd_swerv_core,
+title = {Western Digital, RISC-V implementation SweRV Core},
+howpublished = {\url{https://www.westerndigital.com/company/innovations\#risc-v}},
+note = {Accessed: 2018-12-29}
+}
+@misc{risc-v_news_wd_one_billion_chips,
+title = {RISC-V, News: SiliconANGLE Article: China, Blockchain And Chips: 
+Western Digital Looks Beyond Storage},
+howpublished = {\url{https://riscv.org/2018/06/siliconangle-article-china-blockchain-and-chips-western-digital-looks-beyond-storage/}},
+note = {Accessed: 2018-12-29}
+}
+%%%
+@misc{youtube_a_case_for_risc-v,
+title = {Berkeley University, Video: Instruction Sets Want To Be Free: A Case for RISC-V},
+howpublished = {\url{https://www.youtube.com/watch?v=mD-njD2QKN0}},
+note = {Accessed: 2019-01-18}
+}
+% Videos
+
+
+
+
+% books
+
+@book{tanenbaum_modern_operating_systems_3,
+ author = {Tanenbaum, Andrew S.},
+ title = {Modern Operating Systems},
+ year = {2007},
+ isbn = {9780136006633},
+ edition = {3rd},
+ publisher = {Prentice Hall Press},
+ address = {Upper Saddle River, NJ, USA}
+}
+
+@InProceedings{sh_hu_pre-post-copy,
+    author="Shribman, Aidan
+    and Hudzia, Benoit",
+    editor="Caragiannis, Ioannis
+    and Alexander, Michael
+    and Badia, Rosa Maria
+    and Cannataro, Mario
+    and Costan, Alexandru
+    and Danelutto, Marco
+    and Desprez, Fr{\'e}d{\'e}ric
+    and Krammer, Bettina
+    and Sahuquillo, Julio
+    and Scott, Stephen L.
+    and Weidendorfer, Josef",
+    title="Pre-Copy and Post-Copy VM Live Migration for Memory Intensive Applications",
+    booktitle="Euro-Par 2012: Parallel Processing Workshops",
+    year="2013",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="539--547",
+    isbn="978-3-642-36949-0"
+}
+
+@book{9783540468011,
+  Author = {Uwe Brinkschulte and Theo Ungerer},
+  Title = {Mikrocontroller und Mikroprozessoren (eXamen.press) (German Edition)},
+  Publisher = {Springer},
+  Year = {2010},
+  ISBN = {3540468013},
+  URL = {https://www.amazon.com/Mikrocontroller-Mikroprozessoren-eXamen-press-German-Brinkschulte/dp/3540468013?SubscriptionId=AKIAIOBINVZYXZQZ2U3A&tag=chimbori05-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=3540468013}
+}
+
+@book{alexander_scala_cookbook,
+ author = {Alexander, Alvin},
+ title = {Scala Cookbook: Recipes for Object-Oriented and Functional Programming},
+ year = {2013},
+ isbn = {1449339611},
+ edition = {1st},
+ publisher = {O'Reilly Media, Inc.}
+} 
+
+
+
+% papers
+
+@article{Staknis:1989:SMA:68182.68191,
+ author = {Staknis, M. E.},
+ title = {Sheaved Memory: Architectural Support for State Saving and Restoration in Pages Systems},
+ journal = {SIGARCH Comput. Archit. News},
+ issue_date = {April 1989},
+ volume = {17},
+ number = {2},
+ month = apr,
+ year = {1989},
+ issn = {0163-5964},
+ pages = {96--102},
+ numpages = {7},
+ url = {http://doi.acm.org.eaccess.ub.tum.de/10.1145/68182.68191},
+ doi = {10.1145/68182.68191},
+ acmid = {68191},
+ publisher = {ACM},
+ address = {New York, NY, USA}
+} 
+
+@Article{Sharma2016,
+author="Sharma, Sangeeta
+and Chawla, Meenu",
+title="A three phase optimization method for precopy based VM live migration",
+journal="SpringerPlus",
+year="2016",
+month="07",
+day="08",
+volume="5",
+number="1",
+pages="1022",
+doi="10.1186/s40064-016-2642-2",
+url="https://doi.org/10.1186/s40064-016-2642-2"
+}
+
+@inproceedings{Kocher2018spectre,
+ author = {Paul Kocher and Jann Horn and Anders Fogh and Daniel Genkin and Daniel Gruss and Werner Haas and Mike Hamburg and Moritz Lipp and Stefan Mangard and Thomas Prescher and Michael Schwarz and Yuval Yarom},
+ title = {Spectre Attacks: Exploiting Speculative Execution},
+ booktitle = {40th IEEE Symposium on Security and Privacy (S\&P'19)},
+ year = {2019}
+}
+
+@inproceedings{Lipp2018meltdown,
+ author = {Moritz Lipp and Michael Schwarz and Daniel Gruss and Thomas Prescher and Werner Haas and Anders Fogh and Jann Horn and Stefan Mangard and Paul Kocher and Daniel Genkin and Yuval Yarom and Mike Hamburg},
+ title = {Meltdown: Reading Kernel Memory from User Space},
+ booktitle = {27th {USENIX} Security Symposium ({USENIX} Security 18)},
+ year = {2018}
+}
+
+@inproceedings{vogt_compiler_cr,
+author = {Vogt, Dirk and Giuffrida, Cristiano and Bos, Herbert and Tanenbaum, Andrew},
+year = {2013},
+month = {11},
+pages = {},
+title = {Techniques for Efficient In-Memory Checkpointing},
+volume = {48},
+journal = {ACM SIGOPS Operating Systems Review},
+doi = {10.1145/2524224.2524236}
+}
+
+@ARTICLE{qin_fpga, 
+author={T. Qin and S. J. Bleiker and S. Rana and F. Niklaus and D. Pamunuwa}, 
+journal={IEEE Access}, 
+title={Performance Analysis of Nanoelectromechanical Relay-Based Field-Programmable Gate Arrays}, 
+year={2018}, 
+volume={6}, 
+number={}, 
+pages={15997-16009}, 
+doi={10.1109/ACCESS.2018.2816781}, 
+ISSN={2169-3536}, 
+month={}
+}
+
+@manual{risc-v_isa_manual_user_level,
+    organization  = "CS Division, EECS Department, University of California, Berkeley",
+    title         = "The RISC-V Instruction Set Manual, Volume I: User-Level ISA",
+    year          =  2017,
+    month         =  3,    
+    note          = "Version 2.2"
+}
+
+@manual{risc-v_isa_manual_priviliged_arch,
+    organization  = "CS Division, EECS Department, University of California, Berkeley",
+    title         = "The RISC-V Instruction Set Manual, Volume II: Privileged Architecture",
+    year          =  2017,
+    month         =  3,    
+    note          = "Version 1.10"
+}
+
+@techreport{Asanovic_EECS-2014-146,
+    Author = {Asanović, Krste and Patterson, David A.},
+    Title = {Instruction Sets Should Be Free: The Case For RISC-V},
+    Institution = {EECS Department, University of California, Berkeley},
+    Year = {2014},
+    Month = {8},
+    URL = {http://www2.eecs.berkeley.edu/Pubs/TechRpts/2014/EECS-2014-146.html},
+    Number = {UCB/EECS-2014-146}
+}
+
+@techreport{Kanter_riscv_compressed_figure,
+    Author = {Kanter, David},
+    Title = {RISC-V OFFERS SIMPLE, MODULAR ISA},
+    Year = {2016},
+    Month = {3},
+    URL = {https://riscv.org/2016/04/risc-v-offers-simple-modular-isa/}
+}
+
+@ARTICLE{ieee_754-2008, 
+author={}, 
+journal={IEEE Std 754-2008}, 
+title={IEEE Standard for Floating-Point Arithmetic}, 
+year={2008}, 
+volume={}, 
+number={}, 
+pages={1-70}, 
+ISSN={}, 
+month={8}
+}
+
+@INPROCEEDINGS{firesim_fpga_accelerated, 
+author={S. Karandikar and H. Mao and D. Kim and D. Biancolin and A. Amid and D. Lee and N. Pemberton and E. Amaro and C. Schmidt and A. Chopra and Q. Huang and K. Kovacs and B. Nikolic and R. Katz and J. Bachrach and K. Asanovic}, 
+booktitle={2018 ACM/IEEE 45th Annual International Symposium on Computer Architecture (ISCA)}, 
+title={FireSim: FPGA-Accelerated Cycle-Exact Scale-Out System Simulation in the Public Cloud}, 
+year={2018}, 
+volume={}, 
+number={}, 
+pages={29-42}, 
+doi={10.1109/ISCA.2018.00014}, 
+ISSN={2575-713X}, 
+month={6}
+}
+
+@InProceedings{sel4_enforces_integrity,
+author="Sewell, Thomas
+and Winwood, Simon
+and Gammie, Peter
+and Murray, Toby
+and Andronick, June
+and Klein, Gerwin",
+editor="van Eekelen, Marko
+and Geuvers, Herman
+and Schmaltz, Julien
+and Wiedijk, Freek",
+title="seL4 Enforces Integrity",
+booktitle="Interactive Theorem Proving",
+year="2011",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="325--340",
+isbn="978-3-642-22863-6"
+}
+
+@inproceedings{hewitt_actor_model,
+ author = {Hewitt, Carl and Bishop, Peter and Steiger, Richard},
+ title = {A Universal Modular ACTOR Formalism for Artificial Intelligence},
+ booktitle = {Proceedings of the 3rd International Joint Conference on Artificial Intelligence},
+ series = {IJCAI'73},
+ year = {1973},
+ location = {Stanford, USA},
+ pages = {235--245},
+ numpages = {11},
+ url = {http://dl.acm.org/citation.cfm?id=1624775.1624804},
+ acmid = {1624804},
+ publisher = {Morgan Kaufmann Publishers Inc.},
+ address = {San Francisco, CA, USA}
+}
+
+@ARTICLE{celerity_manycore, 
+author={S. Davidson and S. Xie and C. Torng and K. Al-Hawai and A. Rovinski and T. Ajayi and L. Vega and C. Zhao and R. Zhao and S. Dai and A. Amarnath and B. Veluri and P. Gao and A. Rao and G. Liu and R. K. Gupta and Z. Zhang and R. Dreslinski and C. Batten and M. B. Taylor}, 
+journal={IEEE Micro}, 
+title={The Celerity Open-Source 511-Core RISC-V Tiered Accelerator Fabric: Fast Architectures and Design Methodologies for Fast Chips}, 
+year={2018}, 
+volume={38}, 
+number={2}, 
+pages={30-41},
+ISSN={0272-1732}, 
+month={3}
+}
+
+@proceedings{Kramer:2005:1105760,
+ title = {SC '05: Proceedings of the 2005 ACM/IEEE Conference on Supercomputing},
+ year = {2005},
+ isbn = {1-59593-061-2},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+} 
+
+@inproceedings{Vasavada2011ComparingDA,
+  title={Comparing different approaches for Incremental Checkpointing : The Showdown},
+  author={Manav Vasavada and Frank Mueller and Paul Hargrove},
+  year={2011}
+}
+
+
+%%%
+
+% Master theses
+
+@mastersthesis{josef_start_redundant_memory_cr,
+    author    = "Josef Stark",
+    title     = "Entwicklung eines Redundant Memory basierten Checkpoint/Restore-Mechanismus für L4 Fiasco.OC/Genode",
+    school    = "TU Munich",
+    %type     = "diploma thesis",
+    %address  = "",
+    year      = "2018",
+    %month    = "",
+    %note     = "",
+}
+
+@mastersthesis{sebastian_bachmaier_optimizing_genode_cr_fpga,
+    author    = "Sebastian Bachmaier",
+    title     = "Optimization of a real-time capable Checkpoint/Restore mechanism for L4 Fiasco.OC/Genode by hardware-assisted memory tracing and copyin",
+    school    = "TU Munich",
+    %type     = "diploma thesis",
+    %address  = "",
+    year      = "2019",
+    %month    = "",
+    %note     = "",
+}
+%%%
+
+% Bachelor theses
+
+@thesis{david_werner_criu_fiasco,
+    author    = "David Werner",
+    title     = "Überführung eines bestehenden Linux-basierten Checkpoint/Restore-Mechanismus (CRIU) auf L4 Fiasco.OC/Genode",
+    school    = "TU Munich",
+    year      = "2016",
+    month     = "04"
+}
+%%%
+
+% Patent
+@patent{patent_US20160357645,
+author = "Ljubuncic Igor and Giri Ravi a",
+title = "HARDWARE-ASSISTED APPLICATION CHECKPOINTING AND RESTORING",
+number = "US2016357645 ",
+year = "2016",
+month = "12"
+}
